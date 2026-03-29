@@ -1,8 +1,10 @@
-import { useSearchParams, Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 import { useSearchMeals } from "@/hooks/use-meals";
 import MealCard from "@/components/MealCard";
 import MealCardSkeleton from "@/components/MealCardSkeleton";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { EmptyState } from "@/components/empty-state";
+import { SearchX } from "lucide-react";
 
 const SearchPage = () => {
   const [params] = useSearchParams();
@@ -11,24 +13,39 @@ const SearchPage = () => {
 
   return (
     <div className="container py-8">
-      <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-6">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-medium">Search</span>
-      </nav>
-      <h1 className="text-3xl font-bold text-foreground mb-2">Search Results</h1>
-      <p className="text-muted-foreground mb-8">Showing results for "<span className="font-medium text-foreground">{q}</span>"</p>
+      <Breadcrumb items={[{ label: "Search" }]} className="mb-6" />
+      <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Search Results</h1>
+      <p className="text-muted-foreground mb-8">
+        Showing results for "<span className="font-medium text-foreground">{q}</span>"
+        {meals && <span className="ml-2 text-sm">({meals.length} recipes found)</span>}
+      </p>
 
       {isLoading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {Array.from({ length: 8 }).map((_, i) => <MealCardSkeleton key={i} />)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <MealCardSkeleton key={i} />
+          ))}
         </div>
       ) : !meals?.length ? (
-        <p className="text-center text-muted-foreground py-12">No recipes found for "{q}". Try a different search.</p>
+        <EmptyState
+          icon={SearchX}
+          title="No recipes found"
+          description={`We couldn't find any recipes matching "${q}". Try a different search term.`}
+          action={{
+            label: "Browse Categories",
+            onClick: () => (window.location.href = "/categories"),
+          }}
+        />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {meals.map((m) => (
-            <MealCard key={m.idMeal} id={m.idMeal} name={m.strMeal} thumbnail={m.strMealThumb} category={m.strCategory} />
+            <MealCard
+              key={m.idMeal}
+              id={m.idMeal}
+              name={m.strMeal}
+              thumbnail={m.strMealThumb}
+              category={m.strCategory}
+            />
           ))}
         </div>
       )}

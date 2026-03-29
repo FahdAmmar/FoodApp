@@ -1,7 +1,7 @@
-import { useParams, Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { useParams } from "react-router-dom";
 import { useMealsByCategory } from "@/hooks/use-meals";
 import MealGrid from "@/components/MealGrid";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 const CategoryPage = () => {
   const { name } = useParams<{ name: string }>();
@@ -9,13 +9,14 @@ const CategoryPage = () => {
 
   return (
     <div className="container py-8">
-      <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-6">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-medium">{name}</span>
-      </nav>
-      <h1 className="text-3xl font-bold text-foreground mb-8">{name} Recipes</h1>
-      <MealGrid meals={meals} isLoading={isLoading} emptyMessage={`No ${name} recipes found.`} />
+      <Breadcrumb items={[{ label: name || "" }]} className="mb-6" />
+      <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-8">{name} Recipes</h1>
+      <MealGrid
+        meals={meals}
+        isLoading={isLoading}
+        emptyMessage={`No ${name} recipes found.`}
+        showEmptyAction
+      />
     </div>
   );
 };
