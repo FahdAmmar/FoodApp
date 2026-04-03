@@ -8,7 +8,7 @@ const IngredientPage = () => {
   const { data: meals, isLoading } = useMealsByIngredient(name || "");
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb items={[{ label: name || "" }]} className="mb-6" />
       <div className="flex items-center gap-4 mb-8">
         <img

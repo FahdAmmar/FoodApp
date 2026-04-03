@@ -26,8 +26,8 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80">
-      <div className="container flex h-16 items-center gap-4">
+    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-md supports-backdrop-filter:bg-background/80">
+      <div className="container  m-auto flex h-16 items-center gap-4">
         <Link to="/" className="flex items-center gap-2 font-bold text-lg text-foreground shrink-0 transition-colors hover:text-primary">
           <UtensilsCrossed className="h-6 w-6 text-primary" />
           <span className="hidden xs:inline">TastyBites</span>

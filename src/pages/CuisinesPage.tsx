@@ -9,7 +9,7 @@ const CuisinesPage = () => {
   const { data: areas, isLoading } = useAreas();
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb items={[{ label: "Cuisines" }]} className="mb-6" />
       <div className="flex items-center gap-3 mb-8">
         <div className="p-2 rounded-lg bg-primary/10">

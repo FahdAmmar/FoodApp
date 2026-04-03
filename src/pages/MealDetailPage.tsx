@@ -15,7 +15,7 @@ const MealDetailPage = () => {
 
   if (isLoading) {
     return (
-      <div className="container py-8 space-y-8">
+      <div className="container py-8 space-y-8 m-auto">
         <div className="space-y-2">
           <Skeleton className="h-4 w-64" />
           <Skeleton className="h-10 w-96" />
@@ -56,7 +56,7 @@ const MealDetailPage = () => {
     .map((s) => s.trim());
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb
         items={[
           { label: meal.strCategory, href: `/category/${encodeURIComponent(meal.strCategory)}` },
@@ -121,7 +121,7 @@ const MealDetailPage = () => {
           <ol className="space-y-4">
             {instructions?.map((step, i) => (
               <li key={i} className="flex gap-4">
-                <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-semibold text-sm">
+                <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-semibold text-sm">
                   {i + 1}
                 </span>
                 <p className="text-muted-foreground leading-relaxed pt-1">{step}</p>

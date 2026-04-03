@@ -8,7 +8,7 @@ const CategoryPage = () => {
   const { data: meals, isLoading } = useMealsByCategory(name || "");
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb items={[{ label: name || "" }]} className="mb-6" />
       <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-8">{name} Recipes</h1>
       <MealGrid

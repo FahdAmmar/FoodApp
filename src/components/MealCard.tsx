@@ -11,8 +11,9 @@ interface MealCardProps {
 
 const MealCard = ({ id, name, thumbnail, category }: MealCardProps) => (
   <Link to={`/meal/${id}`} className="group block">
-    <Card className="overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card border-border/50">
-      <div className="relative overflow-hidden aspect-[4/3] bg-muted">
+    <Card className="overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1  border-border/50 ">
+
+      <div className="relative overflow-hidden aspect-4/3 bg-muted m-auto">
         <img
           src={thumbnail}
           alt={name}
@@ -24,7 +25,7 @@ const MealCard = ({ id, name, thumbnail, category }: MealCardProps) => (
             {category}
           </Badge>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
       <CardContent className="p-4">
         <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors leading-tight">

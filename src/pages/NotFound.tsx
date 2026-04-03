@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="min-h-[60vh] flex items-center justify-center m-auto">
       <div className="text-center px-4">
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-destructive/10 mb-6">
           <AlertTriangle className="w-10 h-10 text-destructive" />

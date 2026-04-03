@@ -2,8 +2,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
+
 import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import CategoryPage from "./pages/CategoryPage";
@@ -44,13 +47,14 @@ const App = () => (
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
+    <ReactQueryDevtools />
   </QueryClientProvider>
 );
 
 function Footer() {
   return (
     <footer className="border-t bg-card/50">
-      <div className="container py-8">
+      <div className="container py-8 m-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>Discover delicious recipes from around the world</p>
           <p>Powered by TheMealDB API</p>

@@ -12,7 +12,7 @@ const SearchPage = () => {
   const { data: meals, isLoading } = useSearchMeals(q);
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb items={[{ label: "Search" }]} className="mb-6" />
       <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Search Results</h1>
       <p className="text-muted-foreground mb-8">

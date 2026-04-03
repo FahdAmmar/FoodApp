@@ -22,9 +22,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/10 to-secondary/20 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary/5 via-accent/10 to-secondary/20 py-16 md:py-24">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
-        <div className="container text-center relative">
+        <div className="container m-auto text-center relative">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-4 animate-fade-in">
             Discover <span className="text-primary">Delicious</span> Recipes
           </h1>
@@ -46,7 +46,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-12">
+      <section className="container py-12 m-auto">
         <SectionHeader title="Featured Recipe" viewAllHref={null} />
         {mealLoading ? (
           <div className="flex flex-col md:flex-row gap-6 bg-card rounded-2xl overflow-hidden border border-border/50">
@@ -86,7 +86,7 @@ const Index = () => {
         )}
       </section>
 
-      <section className="container pb-12">
+      <section className="container pb-12 m-auto">
         <SectionHeader title="Browse Categories" viewAllHref="/categories" />
         {catLoading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -135,14 +135,19 @@ interface SectionHeaderProps {
   title: string;
   viewAllHref: string | null;
 }
-
 function SectionHeader({ title, viewAllHref }: SectionHeaderProps) {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <h2 className="text-xl md:text-2xl font-bold text-foreground">{title}</h2>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 mb-6 m-auto">
+      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+        {title}
+      </h2>
       {viewAllHref && (
-        <Link to={viewAllHref} className="text-sm text-primary hover:underline font-medium inline-flex items-center gap-1">
-          View all <ArrowRight className="h-4 w-4" />
+        <Link
+          to={viewAllHref}
+          className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors duration-200 hover:text-primary/80 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+        >
+          View all
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </Link>
       )}
     </div>

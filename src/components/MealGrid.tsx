@@ -31,9 +31,9 @@ const MealGrid = ({ meals, isLoading, emptyMessage = "No meals found.", showEmpt
         action={
           showEmptyAction
             ? {
-                label: "Browse Categories",
-                onClick: () => window.location.href = "/categories",
-              }
+              label: "Browse Categories",
+              onClick: () => window.location.href = "/categories",
+            }
             : undefined
         }
       />
@@ -41,7 +41,7 @@ const MealGrid = ({ meals, isLoading, emptyMessage = "No meals found.", showEmpt
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 m-auto">
       {meals.map((meal) => (
         <MealCard key={meal.idMeal} id={meal.idMeal} name={meal.strMeal} thumbnail={meal.strMealThumb} />
       ))}

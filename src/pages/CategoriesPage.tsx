@@ -7,7 +7,7 @@ const CategoriesPage = () => {
   const { data: categories, isLoading } = useCategories();
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 m-auto">
       <Breadcrumb items={[{ label: "Categories" }]} className="mb-6" />
       <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-8">All Categories</h1>
       {isLoading ? (
