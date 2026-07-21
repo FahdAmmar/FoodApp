@@ -20,4 +20,13 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // shadcn/ui vendored components intentionally co-export cva variant
+    // objects alongside their components; this is the documented pattern
+    // and a known false-positive for the fast-refresh rule.
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

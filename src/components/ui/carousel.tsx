@@ -93,11 +93,15 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         return;
       }
 
-      onSelect(api);
       api.on("reInit", onSelect);
       api.on("select", onSelect);
 
+      // Defer the initial sync to avoid calling setState synchronously
+      // inside the effect body (which would trigger cascading renders).
+      const raf = requestAnimationFrame(() => onSelect(api));
+
       return () => {
+        cancelAnimationFrame(raf);
         api?.off("select", onSelect);
       };
     }, [api, onSelect]);
